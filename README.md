@@ -6,6 +6,19 @@ LILIANDO is a fully responsive and dynamic e-commerce web application built as p
 This project is the continuation of Lilian Rodrigues’ first-ever HTML/CSS website, built in June 2024 at ReDI School. It now evolves into a modern, React-powered experience.
 [https://codepen.io/Lilian-Rodrigues/pen/XWQGJbB](https://codepen.io/Lilian-Rodrigues/pen/XWQGJbB)
 
+components/
+  - Navbar.jsx
+  - ProductCard.jsx
+  - ProductModal.jsx
+
+pages/
+  - Home.jsx
+  - Products.jsx
+  - Cart.jsx
+  - Checkout.jsx
+  - ProductPage.jsx
+
+
 ---
 ### Screenshot
 ![image](https://github.com/user-attachments/assets/7b3d4307-9531-404f-9557-dbb7c7eedc3c)
