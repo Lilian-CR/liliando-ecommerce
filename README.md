@@ -8,7 +8,7 @@ This project is the continuation of Lilian Rodrigues’ first-ever HTML/CSS webs
 
 ---
 ### Screenshot
-![image](https://github.com/user-attachments/assets/dbc2bacb-dd97-4d4f-a29f-2e790026bb4f)
+![image](https://github.com/user-attachments/assets/7b3d4307-9531-404f-9557-dbb7c7eedc3c)
 
 ---
 
