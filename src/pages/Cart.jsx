@@ -23,25 +23,33 @@ function Cart({ cartItems, onRemoveFromCart, onClearCart, onUpdateQuantity }) {
   };
 
   return (
-    <div className="min-h-screen bg-white text-black py-12 px-6">
-      <h1 className="text-3xl font-bold mb-8">Cart</h1>
+    <div className="min-h-screen bg-white text-black py-12 px-4 sm:px-6 lg:px-20">
+      <h1 className="text-3xl font-bold mb-8 text-center sm:text-left">Cart</h1>
 
       {showMessage && (
-        <div className="mb-4 text-primary font-medium">{showMessage}</div>
+        <div className="mb-4 text-primary font-medium text-center sm:text-left">{showMessage}</div>
       )}
 
+      {cartItems.length === 0 ? (
+        <div className="text-center text-gray-500">
+          Your cart is empty. 
+          <Link to="/products" className="text-primary underline ml-2">
+            Go to All Products →
+          </Link>
+        </div>
+      ) : (
         <>
           <ul className="space-y-6">
             {cartItems.map((item, index) => (
               <li
                 key={index}
-                className="border-b pb-4 flex items-center justify-between gap-4"
+                className="border-b pb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
               >
-                <div className="flex items-center gap-4">
+                <div className="flex gap-4">
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="w-16 h-16 object-cover rounded"
+                    className="w-24 h-24 object-cover rounded shadow"
                   />
                   <div>
                     <p className="font-semibold">{item.name}</p>
@@ -66,7 +74,7 @@ function Cart({ cartItems, onRemoveFromCart, onClearCart, onUpdateQuantity }) {
                 </div>
                 <button
                   onClick={() => handleRemove(index)}
-                  className="text-sm text-black underline hover:text-primary"
+                  className="text-sm text-black underline hover:text-primary self-start sm:self-auto"
                 >
                   Remove
                 </button>
@@ -74,31 +82,32 @@ function Cart({ cartItems, onRemoveFromCart, onClearCart, onUpdateQuantity }) {
             ))}
           </ul>
 
-          <div className="mt-6 font-bold text-xl">
+          <div className="mt-8 text-lg sm:text-xl font-bold text-center sm:text-left">
             Total Damage: €{total.toFixed(2)}
           </div>
 
-          <div className="mt-8 flex gap-4 flex-wrap">
+          <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-4 justify-center sm:justify-start">
             <Link
               to="/products"
-              className="inline-block text-primary underline hover:text-primary"
+              className="text-primary underline hover:text-primary"
             >
               ← Continue Shopping
             </Link>
             <Link
               to="/checkout"
-              className="inline-block bg-primary text-white px-6 py-2 rounded hover:bg-primary/50 hover:text-black transition-colors"
+              className="bg-primary text-white px-6 py-2 rounded hover:bg-primary/50 hover:text-black transition-colors text-center"
             >
               Go to Checkout
             </Link>
             <button
               onClick={onClearCart}
-              className="inline-block bg-primary text-white px-6 py-2 rounded hover:bg-primary/50 hover:text-black transition-colors"
+              className="bg-primary text-white px-6 py-2 rounded hover:bg-primary/50 hover:text-black transition-colors text-center"
             >
               Remove All
             </button>
           </div>
         </>
+      )}
     </div>
   );
 }

@@ -71,7 +71,6 @@ import Sk8HiPopCitadel1 from "../images/products/shoes/Sk8-HiPop-Citadel_1.jpg";
 import Sk8HiPopCitadel2 from "../images/products/shoes/Sk8-HiPop-Citadel_2.jpg";
 import Sk8HiPopCitadel3 from "../images/products/shoes/Sk8-HiPop-Citadel_3.jpg";
 
-
 const products = [
     {
       "id": 1,

@@ -12,7 +12,6 @@ function Checkout({ cartItems = [] }) {
   const handlePlaceOrder = (e) => {
     e.preventDefault();
 
-    // Save latest inputs
     localStorage.setItem("checkoutName", name);
     localStorage.setItem("checkoutEmail", email);
     localStorage.setItem("checkoutStreet", street);
@@ -20,14 +19,11 @@ function Checkout({ cartItems = [] }) {
     localStorage.setItem("checkoutCountry", country);
     localStorage.setItem("checkoutPayment", payment);
 
-    // Show modal
     setShowModal(true);
   };
 
   const handleModalClose = () => {
     setShowModal(false);
-
-    // Reset form
     setName("");
     setEmail("");
     setStreet("");
@@ -52,7 +48,7 @@ function Checkout({ cartItems = [] }) {
         </div>
       )}
 
-      {/* Form */}
+      {/* Checkout Form */}
       <form
         onSubmit={handlePlaceOrder}
         className="max-w-lg mx-auto space-y-4 bg-white p-6 rounded shadow-md"
@@ -86,26 +82,29 @@ function Checkout({ cartItems = [] }) {
           required
         />
 
-        <input
-          type="text"
-          placeholder="ZIP Code"
-          value={zip}
-          onChange={(e) => setZip(e.target.value)}
-          className="w-full border border-gray-300 rounded px-4 py-2"
-          required
-        />
+        {/* ZIP + Country in 1 row on larger screens */}
+        <div className="flex flex-col md:flex-row gap-4">
+          <input
+            type="text"
+            placeholder="ZIP Code"
+            value={zip}
+            onChange={(e) => setZip(e.target.value)}
+            className="w-full border border-gray-300 rounded px-4 py-2"
+            required
+          />
 
-        <input
-          type="text"
-          placeholder="Country"
-          value={country}
-          onChange={(e) => setCountry(e.target.value)}
-          className="w-full border border-gray-300 rounded px-4 py-2"
-          required
-        />
+          <input
+            type="text"
+            placeholder="Country"
+            value={country}
+            onChange={(e) => setCountry(e.target.value)}
+            className="w-full border border-gray-300 rounded px-4 py-2"
+            required
+          />
+        </div>
 
-        <div className="text-sm font-semibold">Payment Method</div>
-        <div className="flex gap-4">
+        <div className="text-sm font-semibold mt-2">Payment Method</div>
+        <div className="flex flex-wrap gap-4">
           <label className="flex items-center gap-2">
             <input
               type="radio"
@@ -149,7 +148,7 @@ function Checkout({ cartItems = [] }) {
         </button>
       </form>
 
-      {/* Modal */}
+      {/* Thank You Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 max-w-sm w-full shadow-xl text-center">

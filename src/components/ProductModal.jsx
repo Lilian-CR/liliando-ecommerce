@@ -7,20 +7,23 @@ function ProductModal({ product, onClose, onAddToCart }) {
   if (!product) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-      <div className="bg-stone-200 shadow-lg max-w-lg w-full relative rounded-xl">
-        {/* Close BUTTON */}
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+      onClick={onClose}
+    >
+      <div
+        className="bg-stone-200 shadow-lg max-w-lg w-full relative rounded-xl"
+        onClick={(e) => e.stopPropagation()}
+      >
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 text-gray-600 hover:text-primary transition-colors duration-300"
+          className="absolute top-3 right-3 text-gray-600 hover:text-primary transition-colors duration-300 p-2"
           aria-label="Close"
         >
-          <X size={12} />
+          <X size={20} />
         </button>
 
-        {/* Content */}
         <div className="p-6">
-          {/* Images Gallery */}
           <div className="grid grid-cols-3 gap-2 mb-4">
             {(product.images || [product.image]).map((img, i) => (
               <div key={i} className="w-full aspect-[9/16] overflow-hidden">
@@ -42,7 +45,7 @@ function ProductModal({ product, onClose, onAddToCart }) {
               onAddToCart({ ...product, quantity });
               onClose();
             }}
-            className="mt-2 px-4 py-1 text-sm bg-primary text-white rounded hover:bg-primary/80 hover:text-black transition-colors duration-300 ease-in-out"
+            className="mt-2 px-4 py-2 text-sm bg-primary text-white rounded hover:bg-primary/80 hover:text-black transition-colors"
           >
             Add to Cart
           </button>
