@@ -78,7 +78,7 @@ git clone https://github.com/Lilian-CR/liliando-ecommerce.git
 ```
 2. Navigate into the project folder:
 ```bash
-cd liliando-ecommerce-store
+cd liliando-ecommerce
 ```
 3. Install dependencies:
 ```bash
