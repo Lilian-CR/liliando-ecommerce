@@ -1,9 +1,14 @@
-# LILIANDO E-Commerce Store
+# LILIANDO E-Commerce
 
 ## Overview
-LILIANDO is a fully responsive and dynamic e-commerce web application built as part of the Full-Stack Bootcamp at ReDI School (Spring 2025). It was developed by Lilian Rodrigues and showcases ethical fashion inspired by punk rock and streetwear culture.
+LILIANDO is a fully responsive and dynamic e-commerce web application built as part of the Full-Stack Bootcamp at ReDI School (Spring 2025). Developed by Lilian Rodrigues and showcases streetwear fashion & culture. The project is a modern React/Vite application featuring dynamic product rendering, category filters, localStorage-based cart state, and a smooth user experience using Tailwind CSS.
 
-The project is a modern React/Vite application featuring dynamic product rendering, category filters, localStorage-based cart state, and a smooth user experience using Tailwind CSS.
+This project is the continuation of Lilian Rodrigues’ first-ever HTML/CSS website, built in June 2024 at ReDI School. It now evolves into a modern, React-powered experience.
+[https://codepen.io/Lilian-Rodrigues/pen/XWQGJbB](https://codepen.io/Lilian-Rodrigues/pen/XWQGJbB)
+
+---
+### Screenshot
+![image](https://github.com/user-attachments/assets/dbc2bacb-dd97-4d4f-a29f-2e790026bb4f)
 
 ---
 
@@ -21,45 +26,14 @@ The project is a modern React/Vite application featuring dynamic product renderi
 
 ---
 
-## Folder Structuree-commerce_LILIANDO-app/
-
-├── public/                   # Static assets
-├── src/
-│   ├── components/           # Reusable UI components (Navbar, ProductCard, Modal, etc.)
-│   ├── context/              # Global state management (if used)
-│   ├── data/                 # Static product data (products.js)
-│   ├── images/               # All product and branding images
-│   ├── pages/                # Main page components (Home, Products, ProductPage, etc.)
-│   ├── services/             # Optional API calls or utility functions
-│   ├── App.jsx               # Root component with route setup
-│   ├── index.css             # Global styling
-│   └── main.jsx              # App entry point for Vite
-├── .prettierrc               # Prettier configuration
-├── .prettierignore           # Prettier ignore rules
-├── index.html                # Base HTML file
-├── package.json              # Project metadata and dependencies
-├── package-lock.json         # Dependency lock file
-├── postcss.config.js         # PostCSS configuration
-├── tailwind.config.js        # Tailwind CSS configuration
-└── vite.config.js            # Vite build tool configuration
-
-## Live Site
-**Coming soon on Netlify** — the deployment will be available here:  
-👉 [https://liliando.netlify.app](https://liliando.netlify.app) *(placeholder)*
+## Live Site  
+[https://liliando.netlify.app](https://liliando.netlify.app) 
 
 ---
 
 ## Solution URL
 GitHub repository:  
-👉 [https://github.com/Lilian-CR/liliando-ecommerce-store](https://github.com/Lilian-CR/liliando-ecommerce-store) *(placeholder)*
-
----
-
-## Screenshots
-📸 Homepage with featured categories  
-📸 Product modal with quantity selection  
-📸 Cart view with total and item management  
-📸 Checkout form with modal confirmation
+[https://github.com/Lilian-CR/liliando-ecommerce](https://github.com/Lilian-CR/liliando-ecommerce) 
 
 ---
 
@@ -77,14 +51,8 @@ GitHub repository:
 - Tailwind CSS Docs: https://tailwindcss.com
 - React Docs: https://reactjs.org
 - Lucide Icons: https://lucide.dev
-- Inspiration: Zalando, Drug Church aesthetics, Canva visuals
-
----
-
-## Developer
-**Lilian Rodrigues**  
-Afro-Brazilian creative & punk musician learning Full-Stack at ReDI School  
-💻 Portfolio & links coming soon
+- CodeCademy:
+- Inspiration: Zalando, Street Wear aesthetics, Vans, Dickies, Hell Bunny, Canva visuals
 
 ---
 
@@ -93,7 +61,7 @@ Afro-Brazilian creative & punk musician learning Full-Stack at ReDI School
 To run locally:
 1. Clone the repository:
 ```bash
-git clone https://github.com/Lilian-CR/liliando-ecommerce-store.git
+git clone https://github.com/Lilian-CR/liliando-ecommerce.git
 ```
 2. Navigate into the project folder:
 ```bash
@@ -111,15 +79,10 @@ npm run dev
 ---
 
 ## Deployment
-The project is deployed using **Netlify** for its ease of integration with React and GitHub. To deploy:
-- Push the code to a GitHub repo
-- Connect the repo to Netlify
-- Set build command as `npm run build` and directory as `dist`
+The project is deployed using **Netlify** for its ease of integration with React and GitHub. 
 
 ---
 
 ## Acknowledgements
-- Special thanks to mentors and classmates at ReDI School Berlin
+- Special thanks to teachers, classmates and the whole team at ReDI School Berlin
 - Inspired by brands that align with alternative values and ethical fashion
-- To every hardcore punk fan who codes with attitude — this one's for you 🤘🏾
-
