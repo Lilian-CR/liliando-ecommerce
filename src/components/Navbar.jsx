@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, Menu } from "lucide-react";
 import StoreLogo from "../images/LILIANDO_store_logo.png";
 import { useState } from "react";
 
@@ -7,6 +7,7 @@ function Navbar({ cartCount }) {
   const location = useLocation();
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleScroll = (e, id) => {
     e.preventDefault();
@@ -25,20 +26,23 @@ function Navbar({ cartCount }) {
         section.scrollIntoView({ behavior: "smooth" });
       }
     }
+
+    setMenuOpen(false); // close mobile menu after click
   };
 
   const handleSearch = (e) => {
     if (e.key === "Enter" && searchTerm.trim()) {
       navigate(`/products?search=${encodeURIComponent(searchTerm.trim())}`);
       setSearchTerm("");
+      setMenuOpen(false);
     }
   };
 
   return (
     <nav className="sticky top-0 z-50 bg-white text-primary shadow-md">
-      <div className="flex flex-col md:flex-row justify-between items-center gap-4 px-4 py-3 md:px-32">
+      <div className="flex justify-between items-center px-4 py-3 md:px-32">
         {/* Logo + Search */}
-        <div className="flex items-center gap-6 w-full md:w-auto justify-between md:justify-start">
+        <div className="flex items-center gap-4 w-full md:w-auto">
           <div onClick={(e) => handleScroll(e, "home")} className="cursor-pointer">
             <img
               src={StoreLogo}
@@ -52,77 +56,85 @@ function Navbar({ cartCount }) {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             onKeyDown={handleSearch}
-            className="border border-primary px-4 py-2 w-[150] max-w-xs"
+            className="border border-primary px-4 py-2 w-full max-w-xs hidden sm:block"
           />
         </div>
 
-        {/* Nav Links */}
-        <ul className="flex flex-wrap justify-center md:justify-start gap-4 font-bold text-sm uppercase">
-          <li>
-            <a
-              href="#home"
-              onClick={(e) => handleScroll(e, "home")}
-              className="hover:bg-contrastHover px-2 py-1 rounded transition"
-            >
-              Home
-            </a>
-          </li>
-          <li>
-            <a
-              href="#accessories"
-              onClick={(e) => handleScroll(e, "accessories")}
-              className="hover:bg-contrastHover px-2 py-1 rounded transition"
-            >
-              Accessories
-            </a>
-          </li>
-          <li>
-            <a
-              href="#clothing"
-              onClick={(e) => handleScroll(e, "clothing")}
-              className="hover:bg-contrastHover px-2 py-1 rounded transition"
-            >
-              Clothing
-            </a>
-          </li>
-          <li>
-            <a
-              href="#shoes"
-              onClick={(e) => handleScroll(e, "shoes")}
-              className="hover:bg-contrastHover px-2 py-1 rounded transition"
-            >
-              Shoes
-            </a>
-          </li>
-          <li>
-            <a
-              href="/products"
-              className="hover:bg-contrastHover px-2 py-1 rounded transition"
-            >
-              All Products
-            </a>
-          </li>
-          <li>
-            <a
-              href="#about"
-              onClick={(e) => handleScroll(e, "about")}
-              className="hover:bg-contrastHover px-2 py-1 rounded transition"
-            >
-              About
-            </a>
-          </li>
-        </ul>
+        {/* Cart + Mobile Menu Toggle */}
+        <div className="flex items-center gap-4">
+          {/* Cart Icon */}
+          <div className="relative cursor-pointer" onClick={() => navigate("/cart")}>
+            <ShoppingCart size={28} />
+            {cartCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-primary text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                {cartCount}
+              </span>
+            )}
+          </div>
 
-        {/* Cart Icon */}
-        <div className="relative cursor-pointer" onClick={() => navigate("/cart")}>
-          <ShoppingCart size={30} />
-          {cartCount > 0 && (
-            <span className="absolute -top-2 -right-2 bg-primary text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-              {cartCount}
-            </span>
-          )}
+          {/* Hamburger Menu */}
+          <button
+            className="md:hidden"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            <Menu size={28} />
+          </button>
         </div>
       </div>
+
+      {/* Desktop Menu */}
+      <ul className="hidden md:flex flex-wrap justify-center gap-4 font-bold text-sm uppercase px-4 pb-3">
+        {[
+          { label: "Home", id: "home" },
+          { label: "Accessories", id: "accessories" },
+          { label: "Clothing", id: "clothing" },
+          { label: "Shoes", id: "shoes" },
+          { label: "All Products", href: "/products" },
+          { label: "About", id: "about" },
+        ].map((item) => (
+          <li key={item.label}>
+            <a
+              href={item.href || `#${item.id}`}
+              onClick={(e) => item.id && handleScroll(e, item.id)}
+              className="hover:bg-contrastHover px-2 py-1 rounded transition"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="md:hidden px-4 pb-4 flex flex-col gap-2 font-bold text-sm uppercase bg-white shadow-inner">
+          <input
+            type="text"
+            placeholder="Search products..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyDown={handleSearch}
+            className="border border-primary px-4 py-2 w-full"
+          />
+          {[
+            { label: "Home", id: "home" },
+            { label: "Accessories", id: "accessories" },
+            { label: "Clothing", id: "clothing" },
+            { label: "Shoes", id: "shoes" },
+            { label: "All Products", href: "/products" },
+            { label: "About", id: "about" },
+          ].map((item) => (
+            <a
+              key={item.label}
+              href={item.href || `#${item.id}`}
+              onClick={(e) => item.id && handleScroll(e, item.id)}
+              className="hover:bg-contrastHover px-2 py-1 rounded transition"
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      )}
     </nav>
   );
 }
